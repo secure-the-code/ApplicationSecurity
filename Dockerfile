@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Use a base image to build (and download) the tools on
-FROM python:slim-buster as build
+FROM python:3.14-rc-slim-bookworm as build
 
 LABEL maintainer="support@go-forward.net" \
       vendor="Go Forward" \
@@ -45,7 +45,7 @@ RUN git clone --depth=1 https://github.com/drwetter/testssl.sh /tmp/testssl && \
     mv /tmp/testssl/testssl.sh /usr/lib/testssl/testssl.sh && \
     chmod ugo+x /usr/lib/testssl/testssl.sh
 
-FROM python:slim-buster as release
+FROM python:3.14-rc-slim-bookworm as release
 COPY --from=build /opt/venv /opt/venv
 COPY --from=build /usr/lib/nikto/ /usr/lib/nikto/
 COPY --from=build /usr/lib/testssl/ /usr/lib/testssl/
