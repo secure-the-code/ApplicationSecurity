@@ -6,3 +6,4 @@ python-wappalyzer>=0.2.2
 pyyaml
 requests>=2.9.1
 typer
+urllib3>=2.6.0 # not directly required, pinned by Snyk to avoid a vulnerability
